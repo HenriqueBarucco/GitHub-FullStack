@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Backend-API
+    ports:
+      - "8080:8080"
+    command: yarn dev
+
+  frontend:
+    build:
+      context: ./frontend-next
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    command: yarn dev
